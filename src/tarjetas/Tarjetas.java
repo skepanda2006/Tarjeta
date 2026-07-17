@@ -15,6 +15,14 @@ public class Tarjetas {
 
     
     public static void main(String[] args) {
+        Tarjeta_Debito Debito = new Tarjeta_Debito(1,"Jesus armando","4538203832929472","973497638593847958","345","Banco Azteca","0001",5000,"06/12/29");
+        listaDebito.add(Debito);
+        Tarjeta_Debito Debito2 = new Tarjeta_Debito(2,"Roman Alejandro","5789200832729272","8794936345593827958","616","Bancorme","0002",8000,"06/8/27");
+        listaDebito.add(Debito2);
+         Tarjeta_Credito Credito = new Tarjeta_Credito(1,"Roman Alejandro","5789200832729272","8794936345593827958","616","Bancorme","0002",8000,"06/8/27",10000,800,"12-06-2026");
+        listaCredito.add(Credito);
+        
+        
         boolean cont = true;
        int opcion;
 do{
@@ -63,31 +71,27 @@ do{
         System.out.println("2. Tarjeta Credito");
         System.out.print("Seleccione: ");
         tipo = leer.nextInt();
+        
+        String Titular;
+        System.out.print("    Nombre del titular: ");
+        Titular = leer.next();
+        
+        String numero = "";
 
-       
+for (int i = 0; i < 16; i++) {
+    numero += (int)(Math.random() * 10);
+}
 
-        String numero;
-        do {
-       
-    System.out.print("Ingrese el numero de tarjeta: ");
-    numero = leer.next();
-    if (!numero.matches("\\d{16}")) {
-        System.out.println("El numero de tarjeta debe tener exactamente 16 digitos.");
-    }
-} while (!numero.matches("\\d{16}"));
+System.out.println("Tu numero es Número: " + numero);
         
         
-      String clave;
+     String clave = "";
 
-do {
-    System.out.print("Ingrese la clave (18 digitos): ");
-    clave = leer.next();
+for (int i = 0; i < 18; i++) {
+    clave += (int)(Math.random() * 10);
+}
 
-    if (!clave.matches("\\d{18}")) {
-        System.out.println("Error. La clave debe tener exactamente 18 digitos.");
-    }
-
-} while (!clave.matches("\\d{18}"));
+System.out.println("Clave: " + clave);
 
 
   String nip;
@@ -105,16 +109,15 @@ do {
         System.out.print("Banco: ");
         String banco = leer.nextLine();
 
-        String cvv;
-do {
-    System.out.print("CVV: ");
-    cvv = leer.next();
+       
+  
+          String cvv = "";
 
-    if (!cvv.matches("\\d{3}")) {
-        System.out.println("El CVV debe tener exactamente 3 dígitos.");
-    }
+  for (int i = 0; i < 3; i++) {
+     cvv += (int)(Math.random() * 10);
+  }
 
-} while (!cvv.matches("\\d{3}"));
+   System.out.println("CVV: " + cvv);
 
 
         System.out.print("Saldo: ");
@@ -130,7 +133,7 @@ do {
 
             Tarjeta_Debito debito = new Tarjeta_Debito(
                     id,
-                    "",
+                    Titular,
                     numero,
                     clave,
                     nip,
@@ -160,7 +163,7 @@ do {
 
             Tarjeta_Credito creditoTarjeta = new Tarjeta_Credito(
                     id,
-                    "",
+                    Titular,
                     numero,
                     clave,
                     nip,
@@ -201,6 +204,7 @@ do {
 
             System.out.println("---------------------");
             System.out.println("ID: " + t.getId());
+            System.out.println("ID: " + t.getTitular());      
             System.out.println("Numero: "+ t.getNumero());
             System.out.println("NIP: " + t.getNip());
             System.out.println("CVV: " + t.getCvv());
@@ -208,11 +212,10 @@ do {
             System.out.println("Banco: " + t.getBango());
             System.out.println("Saldo: " + t.getSaldo());
             System.out.println("expiracion: " + t.getExpiracion());
-            break;
             
-                 
-
+            
         }
+        break;
                  case 2:
                       System.out.println("\n------ TARJETAS DE CREDITO ------");
 
@@ -220,6 +223,7 @@ do {
 
             System.out.println("---------------------");
             System.out.println("ID: " + t.getId());
+           System.out.println("ID: " + t.getTitular());  
             System.out.println("Numero: "+ t.getNumero());
             System.out.println("NIP: " + t.getNip());
             System.out.println("CVV: " + t.getCvv());

@@ -12,14 +12,22 @@ public class Tarjeta_Credito extends Tarjeta implements Transciciones {
     private static int cont;
     private final int id;
 
-     public Tarjeta_Credito(int id, String titular, String numero, String Clave,
+     public Tarjeta_Credito(int id, String Titular, String numero, String Clave,
                           String nip, String banco, String cvv, int saldo,
                            String expiracion,double credito,double anualidad,String fechapago) {
 
-        super( numero, Clave, nip, banco, cvv, saldo, expiracion);
+        super( Titular,numero, Clave, nip, banco, cvv, saldo, expiracion);
         this.anualidad = anualidad;
         this.credito = credito;
-        this.id = cont++;
+                  if (id == 0) {
+    this.id = ++cont;
+} else {
+    this.id = id;
+    if (id > cont) {
+        cont = id;
+    }
+}
+
     }
       public int getId() {
         return id;

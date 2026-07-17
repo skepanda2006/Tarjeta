@@ -6,7 +6,7 @@ package tarjetas;
 
 
 public abstract class Tarjeta {
-   
+    private String Titular;
     private String numero;
     private String Clave;
     private String nip;
@@ -16,8 +16,8 @@ public abstract class Tarjeta {
     private boolean activo = true;
     String expiracion;
 
-    public Tarjeta( String numero, String Clave, String nip, String banco, String cvv, int saldo, String expiracion) {
-       
+    public Tarjeta(String Titular, String numero, String Clave, String nip, String banco, String cvv, int saldo, String expiracion) {
+        this.Titular = Titular;
         this.numero = numero;
         this.Clave = Clave;
         this.nip = nip;
@@ -26,6 +26,23 @@ public abstract class Tarjeta {
         this.saldo = saldo;
         this.expiracion = expiracion;
     }
+
+    public String getTitular() {
+        return Titular;
+    }
+
+    public void setTitular(String Titular) {
+        this.Titular = Titular;
+    }
+
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+    
     
     
 
